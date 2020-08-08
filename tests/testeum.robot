@@ -1,28 +1,16 @@
 *** Settings ***
-Documentation       Abrir página e fazer uam pesquisa
+Documentation       Listar produtos
 
-
-Library     SeleniumLibrary
+Resource                  ../resources/base.robot
+Resource                  ../resources/kws.robot
 
 Test Setup      Open Session
 Test Teardown   Close Session
-
-*** Variable ***
-${url}          http://automationpractice.com/index.php
+   
 
 *** Test Cases ***
-Acessar pagina
+Acessar pagina Summer Dresses
     Dado que eu acesse a página da moda mudelo
-    
-
-*** Keywords ***
-##Hooks
-Open Session
-    Open Browser    about:blank     chrome
-
-Close Session
-    Capture Page Screenshot
-    Close Browser
-
-Dado que eu acesse a página da moda mudelo
-    Go To           ${url}    
+    Acesse a categoria "Women"
+    E em seguida a subcategoria "Summer Dresses"
+    Entao devo ir para página "Summer Dresses"

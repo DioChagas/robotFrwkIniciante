@@ -1,46 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200803 22:36:21.674" rpa="false">
+<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200807 22:45:18.584" rpa="false">
 <suite id="s1" name="Testeum" source="C:\training\robotFrwkIniciante\tests\testeum.robot">
-<test id="s1-t1" name="Acessar pagina">
-<kw name="Open Session" type="setup">
+<test id="s1-t1" name="Acessar pagina Summer Dresses">
+<kw name="Open Session" library="base" type="setup">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the optional ``url``.</doc>
 <arguments>
 <arg>about:blank</arg>
 <arg>chrome</arg>
 </arguments>
-<msg timestamp="20200803 22:36:26.588" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<status status="PASS" starttime="20200803 22:36:26.587" endtime="20200803 22:36:35.588"></status>
+<msg timestamp="20200807 22:45:19.014" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20200807 22:45:19.013" endtime="20200807 22:45:23.258"></status>
 </kw>
-<status status="PASS" starttime="20200803 22:36:26.585" endtime="20200803 22:36:35.588"></status>
+<status status="PASS" starttime="20200807 22:45:19.012" endtime="20200807 22:45:23.258"></status>
 </kw>
-<kw name="Dado que eu acesse a página da moda mudelo">
+<kw name="Dado que eu acesse a página da moda mudelo" library="kws">
 <kw name="Go To" library="SeleniumLibrary">
 <doc>Navigates the current browser window to the provided ``url``.</doc>
 <arguments>
-<arg>${url}</arg>
+<arg>${base_url}</arg>
 </arguments>
-<msg timestamp="20200803 22:36:35.590" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
-<status status="PASS" starttime="20200803 22:36:35.589" endtime="20200803 22:36:40.392"></status>
+<msg timestamp="20200807 22:45:23.261" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
+<status status="PASS" starttime="20200807 22:45:23.260" endtime="20200807 22:45:26.918"></status>
 </kw>
-<status status="PASS" starttime="20200803 22:36:35.589" endtime="20200803 22:36:40.392"></status>
+<status status="PASS" starttime="20200807 22:45:23.259" endtime="20200807 22:45:26.919"></status>
 </kw>
-<kw name="Close Session" type="teardown">
+<kw name="Acesse a categoria &quot;Women&quot;" library="kws">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>xpath://*[@id="block_top_menu"]//a[@title="${CATEGORIA}"]</arg>
+</arguments>
+<status status="PASS" starttime="20200807 22:45:26.929" endtime="20200807 22:45:26.971"></status>
+</kw>
+<kw name="Mouse Over" library="SeleniumLibrary">
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="block_top_menu"]//a[@title="${CATEGORIA}"]</arg>
+</arguments>
+<msg timestamp="20200807 22:45:26.972" level="INFO">Simulating Mouse Over on element 'xpath://*[@id="block_top_menu"]//a[@title="Women"]'.</msg>
+<status status="PASS" starttime="20200807 22:45:26.972" endtime="20200807 22:45:27.285"></status>
+</kw>
+<status status="PASS" starttime="20200807 22:45:26.928" endtime="20200807 22:45:27.285"></status>
+</kw>
+<kw name="E em seguida a subcategoria &quot;Summer Dresses&quot;" library="kws">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>xpath://*[@id="block_top_menu"]//a[@title="${SUBCATEGORIA}"]</arg>
+</arguments>
+<status status="PASS" starttime="20200807 22:45:27.286" endtime="20200807 22:45:27.311"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://*[@id="block_top_menu"]//a[@title="${SUBCATEGORIA}"]</arg>
+</arguments>
+<msg timestamp="20200807 22:45:27.313" level="INFO">Clicking element 'xpath://*[@id="block_top_menu"]//a[@title="Summer Dresses"]'.</msg>
+<status status="PASS" starttime="20200807 22:45:27.312" endtime="20200807 22:45:30.284"></status>
+</kw>
+<status status="PASS" starttime="20200807 22:45:27.286" endtime="20200807 22:45:30.284"></status>
+</kw>
+<kw name="Entao devo ir para página &quot;Summer Dresses&quot;" library="kws">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>xpath://*[@id="center_column"]/h1/span[contains(text(),"Summer Dresses")]</arg>
+</arguments>
+<status status="PASS" starttime="20200807 22:45:30.286" endtime="20200807 22:45:30.307"></status>
+</kw>
+<status status="PASS" starttime="20200807 22:45:30.285" endtime="20200807 22:45:30.307"></status>
+</kw>
+<kw name="Close Session" library="base" type="teardown">
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20200803 22:36:41.036" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20200803 22:36:40.395" endtime="20200803 22:36:41.037"></status>
+<msg timestamp="20200807 22:45:31.270" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200807 22:45:30.310" endtime="20200807 22:45:31.270"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20200803 22:36:41.037" endtime="20200803 22:36:43.492"></status>
+<status status="PASS" starttime="20200807 22:45:31.271" endtime="20200807 22:45:33.631"></status>
 </kw>
-<status status="PASS" starttime="20200803 22:36:40.394" endtime="20200803 22:36:43.492"></status>
+<status status="PASS" starttime="20200807 22:45:30.308" endtime="20200807 22:45:33.632"></status>
 </kw>
-<status status="PASS" starttime="20200803 22:36:26.581" endtime="20200803 22:36:43.500" critical="yes"></status>
+<status status="PASS" starttime="20200807 22:45:19.010" endtime="20200807 22:45:33.632" critical="yes"></status>
 </test>
-<doc>Abrir página e fazer uam pesquisa</doc>
-<status status="PASS" starttime="20200803 22:36:21.680" endtime="20200803 22:36:43.502"></status>
+<doc>Listar produtos</doc>
+<status status="PASS" starttime="20200807 22:45:18.588" endtime="20200807 22:45:33.635"></status>
 </suite>
 <statistics>
 <total>
