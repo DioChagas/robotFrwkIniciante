@@ -28,6 +28,7 @@ Quando pesquisar
     Click Element               ${BOTAO_PESQUISAR}
 
 Entao deve retornar a mensagem de erro
+    Set Test Variable               ${DIV_ALERT}
     Wait Until Element Contains     ${DIV_ALERT}     ${MSG_PRODUTO_INEXISTENTE}
 # ==================================================================================
 
@@ -44,7 +45,9 @@ Entao devo ir para página "${SUBCATEGORIA}"
     Wait Until Page Contains Element        xpath://*[@id="center_column"]/h1/span[contains(text(),"Summer Dresses")]
 # ==================================================================================
 
-##CENÁRIO 04 - Adicionando produtos no carrinho
+##CENÁRIOS 04 e 05 - Adicionando (CENÁRIO 04) e REMOVENDO (CENÁRIO 05) produtos no carrinho
+
+    ##  CENÁRIO 04 - ADD NO CARRINHO
 Dado que eu pesquise por "${PRODUTO}"
     Wait Until Element is Visible   ${SEARCH}
     Input Text                      ${SEARCH}       t-shirt
@@ -58,5 +61,67 @@ Quando for exibido produto "${PRODUTO}" no carrinho
     Wait Until Element is Visible       ${CONFIRMAR_ADD_PROD}
     Click Element                       xpath://*[contains(text(), "Proceed to checkout")]      #Confirmar e ir para tela de Checkoout
 
-Entao devo confirmar a compra e ir para a tela de checkout
-    Wait Until Page Contains Element       ${DIV_CHECKOUT}
+Entao devo ir para a tela de checkout
+    Wait Until Page Contains Element        ${DIV_CHECKOUT}
+
+    
+    ## CENÁRIO 05 - REMOVER PRODUTO DO CARRINHO 
+Dado que eu adicione um produto ao carrinho
+                                            #Neste passo simplifiquei o ato de cadastrar o produto novamente, 
+    base.Adicionar produtos     t-shirt     # já que ainda não estamos trabalhando com a manutenção do estado 
+                                            # e persistência da massa de dados do teste.
+
+    Wait Until Page Contains Element        ${DIV_CARRINHO}     #Aguardando aparecer o ícone de 'carrinho' no canto superior direito
+    Click Element                           xpath://*[contains(text(), "Cart")]      #Ir pra tela do carrinho de compras
+
+Quando desistir da compra e remover o produto
+    Wait Until Element is Visible           ${TABELA_PRODUTOS}  #Aguardando a exibição da tabela de produtos
+    Click Element                           ${BOTAO_REMOVER_PRODUTO}    #Clicar no botão de remover produto
+
+Entao deve retornar a mensagem informando que o carrinho esta vazio
+    Wait Until Element Contains             ${DIV_ALERT}     ${MSG_CARRINHO_VAZIO}
+
+## CENÁRIO 06 - CRIANDO NOVO USUÁRIO
+
+# Acessar pagina de Login
+Dado que solicite fazer login no sistema
+    Wait Until Page Contains Element        ${BOTAO_SIGN_IN}
+Quando clicar no botao signIn
+    Click Element                           ${BOTAO_SIGN_IN}
+E for redirecionado para a pagina de login
+    Wait Until Page Contains Element             ${FORMULARIO_CADASTRO}
+
+E informar o email "${EMAIL}"
+    Set Test Variable                       ${EMAIL}
+    
+    Wait Until Page Contains Element        ${CAMPO_EMAIL}
+    Input Text                              ${CAMPO_EMAIL}      ${EMAIL}
+
+Quando clicar para criar usuario
+    Click Element                           ${BOTAO_CRIAR}
+E for redirecionado para a pagina de cadastro   
+    Wait Until Page Contains Element        ${FORMULARIO_CADASTRO_USUARIO}
+
+# Cadastrar novo usuario
+Quando preencher todos os campos obrigatorios
+    Wait Until Element is Visible   ${NOME}
+    Input Text                      ${NOME}          NomeUm
+    Input Text                      ${SOBRENOME}     NomeDois
+    Click Element                   ${CONFIRMAR_CAMPO_EMAIL}
+    ## Element Text Should Be          ${CONFIRMAR_CAMPO_EMAIL}    emailvalido@sasaassd.com
+    Input Password                  ${SENHA}    123456
+
+    Click Element                   ${PRIM_NOME}                
+    Click Element                   ${SEGUNDO_NOME}             
+    Input Text                      ${ENDERECO}                 Rua sem nome e sem numero
+    Input Text                      ${CIDADE}                   New York
+    Select From List By Value       ${ESTADO}                   9
+    Input Text                      ${COD_POSTAL}               00000
+    Select From List By Value       ${PAIS}                     21
+    Input Text                      ${CELULAR}                  1234567890
+    Input Text                      ${ALIAS_ENDERECO}           Rua sem nome e sem calcada
+    Click Element                   ${BOTAO_REGISTRAR}
+
+Entao usuario deve ser cadastrado com sucesso
+    Wait Until Page Contains Element    ${CONTA_CHECK}
+

@@ -8,10 +8,13 @@ Test Setup      Open Session
 Test Teardown   Close Session
 
 *** Test Cases ***
-Adicionar produtos no carrinho
+Adicionar e Remover produtos no carrinho
     Dado que eu pesquise por "t-shirt"
     E adicione "t-shirt" ao carrinho
     Quando for exibido produto "t-shirt" no carrinho
-    Entao devo confirmar a compra e ir para a tela de checkout     
+    Entao devo ir para a tela de checkout
+
+
+
     
     
