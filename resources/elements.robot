@@ -7,3 +7,4 @@ Documentation       Aqui estão presentes todos (ou alguns) elementos mapeados
 
 ${SEARCH}               id:search_query_top
 ${BOTAO_PESQUISAR}      css:button[type=submit]
+${DIV_ALERT}            class:alert

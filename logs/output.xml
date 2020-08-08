@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200808 11:26:10.454" rpa="false">
-<suite id="s1" name="Pesquisar-Produto" source="C:\training\robotFrwkIniciante\tests\pesquisar-produto.robot">
-<test id="s1-t1" name="Realizar uma pesquisa de produtos">
+<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20200808 12:04:57.479" rpa="false">
+<suite id="s1" name="Pesquisar-Prod-Inexistente" source="C:\training\robotFrwkIniciante\tests\pesquisar-prod-inexistente.robot">
+<test id="s1-t1" name="Validar mensagem de produto não encontrado">
 <kw name="Open Session" library="base" type="setup">
 <kw name="Open Browser" library="SeleniumLibrary">
 <doc>Opens a new browser instance to the optional ``url``.</doc>
@@ -9,75 +9,76 @@
 <arg>about:blank</arg>
 <arg>chrome</arg>
 </arguments>
-<msg timestamp="20200808 11:26:10.846" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<status status="PASS" starttime="20200808 11:26:10.846" endtime="20200808 11:26:14.893"></status>
+<msg timestamp="20200808 12:04:57.902" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20200808 12:04:57.901" endtime="20200808 12:05:02.187"></status>
 </kw>
 <kw name="Go To" library="SeleniumLibrary">
 <doc>Navigates the current browser window to the provided ``url``.</doc>
 <arguments>
 <arg>${base_url}</arg>
 </arguments>
-<msg timestamp="20200808 11:26:14.894" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
-<status status="PASS" starttime="20200808 11:26:14.893" endtime="20200808 11:26:18.871"></status>
+<msg timestamp="20200808 12:05:02.188" level="INFO">Opening url 'http://automationpractice.com/index.php'</msg>
+<status status="PASS" starttime="20200808 12:05:02.187" endtime="20200808 12:05:06.685"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:10.845" endtime="20200808 11:26:18.871"></status>
+<status status="PASS" starttime="20200808 12:04:57.901" endtime="20200808 12:05:06.685"></status>
 </kw>
-<kw name="Dado que eu digite &quot;Dress&quot; no campo de pesquisa" library="kws">
+<kw name="Dado que eu digite &quot;produtoInexistente&quot;" library="kws">
 <kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
 <doc>Waits until the element ``locator`` is visible.</doc>
 <arguments>
 <arg>${SEARCH}</arg>
 </arguments>
-<status status="PASS" starttime="20200808 11:26:18.875" endtime="20200808 11:26:19.070"></status>
+<status status="PASS" starttime="20200808 12:05:06.700" endtime="20200808 12:05:06.749"></status>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
 <arguments>
 <arg>${SEARCH}</arg>
-<arg>Dresses</arg>
+<arg>produtoInexistente</arg>
 </arguments>
-<msg timestamp="20200808 11:26:19.071" level="INFO">Typing text 'Dresses' into text field 'id:search_query_top'.</msg>
-<status status="PASS" starttime="20200808 11:26:19.070" endtime="20200808 11:26:19.503"></status>
+<msg timestamp="20200808 12:05:06.750" level="INFO">Typing text 'produtoInexistente' into text field 'id:search_query_top'.</msg>
+<status status="PASS" starttime="20200808 12:05:06.749" endtime="20200808 12:05:07.045"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:18.873" endtime="20200808 11:26:19.503"></status>
+<status status="PASS" starttime="20200808 12:05:06.699" endtime="20200808 12:05:07.045"></status>
 </kw>
-<kw name="Quando clicar no botao pesquisar" library="kws">
+<kw name="Quando pesquisar" library="kws">
 <kw name="Click Element" library="SeleniumLibrary">
 <doc>Click the element identified by ``locator``.</doc>
 <arguments>
 <arg>${BOTAO_PESQUISAR}</arg>
 </arguments>
-<msg timestamp="20200808 11:26:19.505" level="INFO">Clicking element 'css:button[type=submit]'.</msg>
-<status status="PASS" starttime="20200808 11:26:19.504" endtime="20200808 11:26:22.336"></status>
+<msg timestamp="20200808 12:05:07.046" level="INFO">Clicking element 'css:button[type=submit]'.</msg>
+<status status="PASS" starttime="20200808 12:05:07.046" endtime="20200808 12:05:08.058"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:19.504" endtime="20200808 11:26:22.336"></status>
+<status status="PASS" starttime="20200808 12:05:07.045" endtime="20200808 12:05:08.059"></status>
 </kw>
-<kw name="Entao deve listar o produto &quot;Dress&quot;" library="kws">
-<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<kw name="Entao deve retornar a mensagem de erro" library="kws">
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` contains ``text``.</doc>
 <arguments>
-<arg>xpath://*[@id="center_column"]/h1/span[contains(text(),"Dresses")]</arg>
+<arg>${DIV_ALERT}</arg>
+<arg>No results were found for your search "produtoInexistente"</arg>
 </arguments>
-<status status="PASS" starttime="20200808 11:26:22.342" endtime="20200808 11:26:22.376"></status>
+<status status="PASS" starttime="20200808 12:05:08.061" endtime="20200808 12:05:09.467"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:22.341" endtime="20200808 11:26:22.376"></status>
+<status status="PASS" starttime="20200808 12:05:08.060" endtime="20200808 12:05:09.467"></status>
 </kw>
 <kw name="Close Session" library="base" type="teardown">
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20200808 11:26:22.708" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20200808 11:26:22.378" endtime="20200808 11:26:22.709"></status>
+<msg timestamp="20200808 12:05:09.767" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200808 12:05:09.469" endtime="20200808 12:05:09.767"></status>
 </kw>
 <kw name="Close Browser" library="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" starttime="20200808 11:26:22.710" endtime="20200808 11:26:25.040"></status>
+<status status="PASS" starttime="20200808 12:05:09.767" endtime="20200808 12:05:12.079"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:22.377" endtime="20200808 11:26:25.041"></status>
+<status status="PASS" starttime="20200808 12:05:09.468" endtime="20200808 12:05:12.080"></status>
 </kw>
-<status status="PASS" starttime="20200808 11:26:10.844" endtime="20200808 11:26:25.042" critical="yes"></status>
+<status status="PASS" starttime="20200808 12:04:57.900" endtime="20200808 12:05:12.081" critical="yes"></status>
 </test>
-<doc>Neste cenário contém passos para realizar uma pesquisa de produtos</doc>
-<status status="PASS" starttime="20200808 11:26:10.458" endtime="20200808 11:26:25.049"></status>
+<doc>Neste cenário contém passos para validar mensagem de "Produto não encontrado"</doc>
+<status status="PASS" starttime="20200808 12:04:57.482" endtime="20200808 12:05:12.089"></status>
 </suite>
 <statistics>
 <total>
@@ -87,7 +88,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="Pesquisar-Produto">Pesquisar-Produto</stat>
+<stat pass="1" fail="0" id="s1" name="Pesquisar-Prod-Inexistente">Pesquisar-Prod-Inexistente</stat>
 </suite>
 </statistics>
 <errors>
