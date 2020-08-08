@@ -12,6 +12,7 @@ ${base_url}     http://automationpractice.com/index.php
 ##Hooks
 Open Session
     Open Browser    about:blank     chrome
+    Go To           ${base_url}
 
 Close Session
     Capture Page Screenshot
