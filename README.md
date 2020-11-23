@@ -1,2 +1,2 @@
-# robotFrwkIniciante
-Repositório com os códigos das aulas do Curso da Udemy ministrado pela Mayara "May" Fernandes
+# RobotFramework - First steps
+This repository contains classroom code of the Udemy Course ministred by Mayara "May" Fernandes
