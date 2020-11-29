@@ -4,6 +4,10 @@ Documentation       Aqui ficarão as palavras-chaves
 Resource            elements.robot
 Resource            base.robot
 
+*** Variables ***
+&{CLIENTE}  nome=NomeUm     sobrenome=NomeDois      endereco=Rua sem nome e sem numero      cidade=New York
+...         estado=9    CEP=00000   pais=21     telefone=1234567890     alias=Rua sem nome e sem calcada
+
 *** Keywords ***
 ##CENÁRIO 01 - Buscar Produto existente
 Dado que eu digite "${PRODUTO}" no campo de pesquisa
@@ -105,21 +109,21 @@ E for redirecionado para a pagina de cadastro
 # Cadastrar novo usuario
 Quando preencher todos os campos obrigatorios
     Wait Until Element is Visible   ${NOME}
-    Input Text                      ${NOME}          NomeUm
-    Input Text                      ${SOBRENOME}     NomeDois
+    Input Text                      ${NOME}          
+    Input Text                      ${SOBRENOME}     
     Click Element                   ${CONFIRMAR_CAMPO_EMAIL}
     ## Element Text Should Be          ${CONFIRMAR_CAMPO_EMAIL}    emailvalido@sasaassd.com
     Input Password                  ${SENHA}    123456
 
-    Click Element                   ${PRIM_NOME}                
-    Click Element                   ${SEGUNDO_NOME}             
-    Input Text                      ${ENDERECO}                 Rua sem nome e sem numero
-    Input Text                      ${CIDADE}                   New York
-    Select From List By Value       ${ESTADO}                   9
-    Input Text                      ${COD_POSTAL}               00000
-    Select From List By Value       ${PAIS}                     21
-    Input Text                      ${CELULAR}                  1234567890
-    Input Text                      ${ALIAS_ENDERECO}           Rua sem nome e sem calcada
+    Click Element                   ${PRIM_NOME}        ${CLIENTE.nome}     
+    Click Element                   ${SEGUNDO_NOME}     ${CLIENTE.sobrenome}    
+    Input Text                      ${ENDERECO}         ${CLIENTE.endereco}
+    Input Text                      ${CIDADE}           ${CLIENTE.cidade}
+    Select From List By Value       ${ESTADO}           ${CLIENTE.estado}
+    Input Text                      ${COD_POSTAL}       ${CLIENTE.CEP}
+    Select From List By Value       ${PAIS}             ${CLIENTE.pais}
+    Input Text                      ${CELULAR}          ${CLIENTE.telefone}
+    Input Text                      ${ALIAS_ENDERECO}   ${CLIENTE.alias}
     Click Element                   ${BOTAO_REGISTRAR}
 
 Entao usuario deve ser cadastrado com sucesso
