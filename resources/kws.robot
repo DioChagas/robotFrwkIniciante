@@ -8,6 +8,8 @@ Resource            base.robot
 &{CLIENTE}  nome=NomeUm     sobrenome=NomeDois      endereco=Rua sem nome e sem numero      cidade=New York
 ...         estado=9    CEP=00000   pais=21     telefone=1234567890     alias=Rua sem nome e sem calcada
 
+# &{ENDERECO_CLIENTE}     nome_secao=NomeUm
+
 *** Keywords ***
 ##CENÁRIO 01 - Buscar Produto existente
 Dado que eu digite "${PRODUTO}" no campo de pesquisa
@@ -109,14 +111,14 @@ E for redirecionado para a pagina de cadastro
 # Cadastrar novo usuario
 Quando preencher todos os campos obrigatorios
     Wait Until Element is Visible   ${NOME}
-    Input Text                      ${NOME}          
-    Input Text                      ${SOBRENOME}     
+    Input Text                      ${NOME}         ${CLIENTE.nome}
+    Input Text                      ${SOBRENOME}    ${CLIENTE.sobrenome}
     Click Element                   ${CONFIRMAR_CAMPO_EMAIL}
     ## Element Text Should Be          ${CONFIRMAR_CAMPO_EMAIL}    emailvalido@sasaassd.com
     Input Password                  ${SENHA}    123456
 
-    Click Element                   ${PRIM_NOME}        ${CLIENTE.nome}     
-    Click Element                   ${SEGUNDO_NOME}     ${CLIENTE.sobrenome}    
+    Click Element                   ${PRIM_NOME}             
+    Click Element                   ${SEGUNDO_NOME}         
     Input Text                      ${ENDERECO}         ${CLIENTE.endereco}
     Input Text                      ${CIDADE}           ${CLIENTE.cidade}
     Select From List By Value       ${ESTADO}           ${CLIENTE.estado}
