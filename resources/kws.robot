@@ -131,3 +131,5 @@ Quando preencher todos os campos obrigatorios
 Entao usuario deve ser cadastrado com sucesso
     Wait Until Page Contains Element    ${CONTA_CHECK}
 
+
+## Caso de Teste de Exemplo 1
