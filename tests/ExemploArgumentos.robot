@@ -8,6 +8,7 @@ Documentation       Exemplo de uso de variáveis como Argumentos em Keywords
 Caso de Teste de Exemplo 01
     Imprimir os dados da pessoa
 
+
 *** Keywords ***
 Imprimir os dados da pessoa
     Uma subkeyword com argumentos       ${PESSOA.nome}      ${PESSOA.email}
@@ -23,4 +24,3 @@ Uma subkeyword com retorno
     [Arguments]     ${NOME_USUARIO}     ${IDADE_USUARIO}
     ${MENSAGEM}     Set Variable If     ${IDADE_USUARIO}<18     Não autorizado! O usuário ${NOME_USUARIO} é menor de idade!
     [Return]        ${MENSAGEM}
-

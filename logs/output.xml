@@ -1,81 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20201129 23:23:40.480" rpa="false">
-<suite id="s1" name="ExemploArgumentos" source="C:\training\robotFrwkIniciante\tests\ExemploArgumentos.robot">
-<test id="s1-t1" name="Caso de Teste de Exemplo 01">
-<kw name="Imprimir os dados da pessoa">
-<msg timestamp="20201129 23:23:40.559" level="TRACE">Arguments: [  ]</msg>
-<kw name="Uma subkeyword com argumentos">
+<robot generator="Robot 3.2.1 (Python 3.8.3 on win32)" generated="20201203 22:37:07.661" rpa="false">
+<suite id="s1" name="ExemploComLogs" source="C:\training\robotFrwkIniciante\tests\ExemploComLogs.robot">
+<test id="s1-t1" name="Caso de Teste 01">
+<kw name="Usando LOG para mensagens">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>${PESSOA.nome}</arg>
-<arg>${PESSOA.email}</arg>
+<arg>Minha msg de LOG</arg>
 </arguments>
-<msg timestamp="20201129 23:23:40.561" level="TRACE">Arguments: [ ${NOME_USUARIO}='Diogenes Chagas' | ${EMAIL_USUARIO}='diogenes@mail.com' ]</msg>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>Nome do usuário:</arg>
-<arg>${NOME_USUARIO}</arg>
-</arguments>
-<msg timestamp="20201129 23:23:40.562" level="TRACE">Arguments: [ 'Nome do usuário:' | 'Diogenes Chagas' ]</msg>
-<msg timestamp="20201129 23:23:40.563" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20201129 23:23:40.562" endtime="20201129 23:23:40.563"></status>
+<msg timestamp="20201203 22:37:10.956" level="INFO">Minha msg de LOG</msg>
+<status status="PASS" starttime="20201203 22:37:10.956" endtime="20201203 22:37:10.956"></status>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
 <arguments>
-<arg>Email do usuário:</arg>
-<arg>${EMAIL_USUARIO}</arg>
-</arguments>
-<msg timestamp="20201129 23:23:40.564" level="TRACE">Arguments: [ 'Email do usuário:' | 'diogenes@mail.com' ]</msg>
-<msg timestamp="20201129 23:23:40.565" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20201129 23:23:40.564" endtime="20201129 23:23:40.565"></status>
-</kw>
-<msg timestamp="20201129 23:23:40.565" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20201129 23:23:40.560" endtime="20201129 23:23:40.565"></status>
-</kw>
-<kw name="Uma subkeyword com retorno">
-<arguments>
-<arg>${PESSOA.nome}</arg>
-<arg>${PESSOA.idade}</arg>
+<arg>variavel qualquer</arg>
 </arguments>
 <assign>
-<var>${MENSAGEM_ALERTA}</var>
+<var>${VAR}</var>
 </assign>
-<msg timestamp="20201129 23:23:40.568" level="TRACE">Arguments: [ ${NOME_USUARIO}='Diogenes Chagas' | ${IDADE_USUARIO}='17' ]</msg>
-<kw name="Set Variable If" library="BuiltIn">
-<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20201203 22:37:10.957" level="INFO">${VAR} = variavel qualquer</msg>
+<status status="PASS" starttime="20201203 22:37:10.956" endtime="20201203 22:37:10.957"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>${IDADE_USUARIO}&lt;18</arg>
-<arg>Não autorizado! O usuário ${NOME_USUARIO} é menor de idade!</arg>
+<arg>Posso logar uma ${VAR} no meio de um log</arg>
 </arguments>
-<assign>
-<var>${MENSAGEM}</var>
-</assign>
-<msg timestamp="20201129 23:23:40.569" level="TRACE">Arguments: [ '17&lt;18' | 'Não autorizado! O usuário ${NOME_USUARIO} é menor de idade!' ]</msg>
-<msg timestamp="20201129 23:23:40.570" level="TRACE">Return: 'Não autorizado! O usuário Diogenes Chagas é menor de idade!'</msg>
-<msg timestamp="20201129 23:23:40.570" level="INFO">${MENSAGEM} = Não autorizado! O usuário Diogenes Chagas é menor de idade!</msg>
-<status status="PASS" starttime="20201129 23:23:40.569" endtime="20201129 23:23:40.570"></status>
+<msg timestamp="20201203 22:37:10.957" level="INFO">Posso logar uma variavel qualquer no meio de um log</msg>
+<status status="PASS" starttime="20201203 22:37:10.957" endtime="20201203 22:37:10.957"></status>
 </kw>
-<msg timestamp="20201129 23:23:40.570" level="TRACE">Return: 'Não autorizado! O usuário Diogenes Chagas é menor de idade!'</msg>
-<msg timestamp="20201129 23:23:40.570" level="INFO">${MENSAGEM_ALERTA} = Não autorizado! O usuário Diogenes Chagas é menor de idade!</msg>
-<status status="PASS" starttime="20201129 23:23:40.566" endtime="20201129 23:23:40.570"></status>
+<status status="PASS" starttime="20201203 22:37:10.956" endtime="20201203 22:37:10.957"></status>
 </kw>
+<kw name="Usando LOG console">
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
-<arg>${MENSAGEM_ALERTA}</arg>
+<arg>Logando saída no console</arg>
 </arguments>
-<msg timestamp="20201129 23:23:40.571" level="TRACE">Arguments: [ 'Não autorizado! O usuário Diogenes Chagas é menor de idade!' ]</msg>
-<msg timestamp="20201129 23:23:40.572" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20201129 23:23:40.571" endtime="20201129 23:23:40.572"></status>
+<status status="PASS" starttime="20201203 22:37:10.959" endtime="20201203 22:37:10.959"></status>
 </kw>
-<msg timestamp="20201129 23:23:40.572" level="TRACE">Return: None</msg>
-<status status="PASS" starttime="20201129 23:23:40.559" endtime="20201129 23:23:40.572"></status>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>Posso logar minha lista inteira @{FRUTAS}</arg>
+</arguments>
+<msg timestamp="20201203 22:37:10.959" level="INFO">Posso logar minha lista inteira ['maça', 'banana', 'morango', 'tomate']</msg>
+<status status="PASS" starttime="20201203 22:37:10.959" endtime="20201203 22:37:10.959"></status>
 </kw>
-<status status="PASS" starttime="20201129 23:23:40.558" endtime="20201129 23:23:40.573" critical="yes"></status>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Posso logar somente alguns itens da lista ${FRUTAS[1]} - ${FRUTAS[2]}</arg>
+</arguments>
+<msg timestamp="20201203 22:37:10.960" level="INFO">Posso logar somente alguns itens da lista banana - morango</msg>
+<status status="PASS" starttime="20201203 22:37:10.959" endtime="20201203 22:37:10.960"></status>
+</kw>
+<status status="PASS" starttime="20201203 22:37:10.959" endtime="20201203 22:37:10.960"></status>
+</kw>
+<kw name="Screenshots dos milagres">
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>https://globoesporte.globo.com/</arg>
+<arg>chrome</arg>
+</arguments>
+<msg timestamp="20201203 22:37:10.962" level="INFO">Opening browser 'chrome' to base url 'https://globoesporte.globo.com/'.</msg>
+<status status="PASS" starttime="20201203 22:37:10.962" endtime="20201203 22:37:41.738"></status>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20201203 22:37:42.917" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-43.png"&gt;&lt;img src="selenium-screenshot-43.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20201203 22:37:41.738" endtime="20201203 22:37:42.917"></status>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20201203 22:37:42.918" endtime="20201203 22:37:47.134"></status>
+</kw>
+<status status="PASS" starttime="20201203 22:37:10.962" endtime="20201203 22:37:47.134"></status>
+</kw>
+<status status="PASS" starttime="20201203 22:37:10.955" endtime="20201203 22:37:47.136" critical="yes"></status>
 </test>
-<doc>Exemplo de uso de variáveis como Argumentos em Keywords</doc>
-<status status="PASS" starttime="20201129 23:23:40.484" endtime="20201129 23:23:40.576"></status>
+<doc>Suíte de testes para demonstrar o uso de Logs
+no RobotFramework</doc>
+<status status="PASS" starttime="20201203 22:37:07.665" endtime="20201203 22:37:47.144"></status>
 </suite>
 <statistics>
 <total>
@@ -85,7 +93,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="ExemploArgumentos">ExemploArgumentos</stat>
+<stat pass="1" fail="0" id="s1" name="ExemploComLogs">ExemploComLogs</stat>
 </suite>
 </statistics>
 <errors>

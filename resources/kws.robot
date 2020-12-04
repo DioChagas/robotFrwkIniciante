@@ -8,7 +8,6 @@ Resource            base.robot
 &{CLIENTE}  nome=NomeUm     sobrenome=NomeDois      endereco=Rua sem nome e sem numero      cidade=New York
 ...         estado=9    CEP=00000   pais=21     telefone=1234567890     alias=Rua sem nome e sem calcada
 
-# &{ENDERECO_CLIENTE}     nome_secao=NomeUm
 
 *** Keywords ***
 ##CENÁRIO 01 - Buscar Produto existente
